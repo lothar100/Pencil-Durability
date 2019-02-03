@@ -38,5 +38,11 @@ public class Pencil {
 
     public void Write(String newText){
         Text+=newText;
+        int numCharacters = newText.replaceAll("\\s+","").length();
+        degradePoint(numCharacters);
+    }
+
+    private void degradePoint(int lossDur){
+        pointDurability = Math.max(0,pointDurability-lossDur);
     }
 }
