@@ -25,7 +25,7 @@ public class PencilTest {
 	public void testDegradation() {
 		//Test 1 - check for decrease in point durability
 		String testString = "testing degradation...";
-		int durabilityUse = testString.replaceAll("\\s+","").length();
+		int durabilityUse = testPencil.countDurabilityUse(testString);
 		int expectedDurability = testPencil.pointDurability - durabilityUse;
 		testPencil.Write(testString);
 		int actualDurability = testPencil.pointDurability;

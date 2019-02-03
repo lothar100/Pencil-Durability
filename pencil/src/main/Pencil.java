@@ -59,8 +59,7 @@ public class Pencil {
 
     public void Write(String newText){
         Text+=newText;
-        int numCharacters = newText.replaceAll("\\s+","").length();
-        degradePoint(numCharacters);
+        degradePoint(countDurabilityUse(newText));
     }
 
     public void Sharpen(){
