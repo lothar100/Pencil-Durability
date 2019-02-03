@@ -10,6 +10,7 @@ public class Pencil {
     public String Text;
     public int pointDurability;
     public int initialDurability;
+    public int bodyLength;
     
     private int sharpeningRate;
 
@@ -17,14 +18,16 @@ public class Pencil {
         Text = "";
         initialDurability = 40000;
         pointDurability = initialDurability;
+        bodyLength = 10;
 
         sharpeningRate = 40000;
     }
 
-    public Pencil(String iText, int iDurability){
+    public Pencil(String iText, int iDurability, int iBodyLength){
         Text = iText;
         initialDurability = iDurability;
         pointDurability = initialDurability;
+        bodyLength = iBodyLength;
 
         sharpeningRate = 40000;
     }

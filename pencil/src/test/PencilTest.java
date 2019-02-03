@@ -41,5 +41,17 @@ public class PencilTest {
 		testPencil.Sharpen();
 		int actualDurability = testPencil.pointDurability;
 		assertEquals("Test 1 failed",expectedDurability,actualDurability);
+
+		//Test 2 - check for no change in point durability when the length is too low to sharpen
+		testString = "testing not sharpening...";
+		testPencil.bodyLength = 1;
+		testPencil.Write(testString);
+		testPencil.Sharpen();
+		testPencil.Write(testString);
+		expectedDurability = testPencil.pointDurability;
+		testPencil.Sharpen();
+		actualDurability = testPencil.pointDurability;
+		assertEquals("Test 2 failed",expectedDurability,actualDurability);
+		testPencil.bodyLength = 10;
 	}
 }
