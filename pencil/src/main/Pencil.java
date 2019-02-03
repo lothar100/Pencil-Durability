@@ -9,21 +9,29 @@ public class Pencil {
 
     public String Text = "";
 
+    public int pointDurability = 40000;
+
     public static void main(String[] args) throws Exception {
-        
         if(args[0].equals("Test")){
             Result result = JUnitCore.runClasses(PencilTest.class);
 
             int numTests = result.getRunCount();
             int numFailed = result.getFailureCount();
+            int numIgnored = result.getIgnoreCount();
+
+            System.out.println((numTests - numFailed) + " Passed Successfully\n");
 
             if(!result.wasSuccessful()){
                 System.out.println(numFailed + " Failed:");
                 for(Failure failure : result.getFailures()){
-                    System.out.println("\t" + failure.getDescription().getMethodName());
+                    System.out.print("\t" + failure.getDescription().getMethodName());
+                    System.out.print(" - ");
+                    System.out.println(failure.getMessage());
                 }
-            }else{
-                System.out.println(numTests + " Passed Successfully");
+
+                if(numIgnored > 0){
+                    System.out.print("\n" + numIgnored + " Ignored");
+                }
             }
         }
     }

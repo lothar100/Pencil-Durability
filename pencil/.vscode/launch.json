@@ -8,7 +8,7 @@
             "type": "java",
             "name": "Debug - Test",
             "request": "launch",
-            "mainClass": "",
+            "mainClass": "main.Pencil",
             "args": "Test"
         }
     ]
