@@ -6,8 +6,12 @@ import org.junit.Test;
 
 public class PencilTest {
 
+	Pencil testPencil = new Pencil();
+
     @Test
 	public void testWrite() {
-		assertTrue(false);
+		String testString = "testing write...";
+		testPencil.Write(testString);
+		assertTrue(testPencil.Text.equals(testString));
 	}
 }

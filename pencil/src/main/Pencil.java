@@ -7,6 +7,8 @@ import org.junit.runner.notification.Failure;
 
 public class Pencil {
 
+    public String Text = "";
+
     public static void main(String[] args) throws Exception {
         
         if(args[0].equals("Test")){
@@ -24,5 +26,9 @@ public class Pencil {
                 System.out.println(numTests + " Passed Successfully");
             }
         }
+    }
+
+    public void Write(String newText){
+        Text+=newText;
     }
 }
