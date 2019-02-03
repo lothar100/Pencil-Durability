@@ -72,6 +72,9 @@ public class Pencil {
     }
 
     private void sharpenPoint(int gainDur){
+        if(bodyLength < 1) return;
+
         pointDurability = Math.min(initialDurability,pointDurability+gainDur);
+        bodyLength--;
     }
 }
