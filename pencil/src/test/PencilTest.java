@@ -23,11 +23,22 @@ public class PencilTest {
 
 	@Test
 	public void testDegradation() {
-		//Test 1 - check for degradation in point durability
+		//Test 1 - check for decrease in point durability
 		String testString = "testing degradation...";
 		int numCharacters = testString.replaceAll("\\s+","").length();
 		int expectedDurability = testPencil.pointDurability - numCharacters;
 		testPencil.Write(testString);
+		int actualDurability = testPencil.pointDurability;
+		assertEquals("Test 1 failed",expectedDurability,actualDurability);
+	}
+
+	@Test
+	public void testSharpening(){
+		//Test 1 - check for increase in point durability
+		String testString = "testing sharpening...";
+		int expectedDurability = testPencil.initialDurability;
+		testPencil.Write(testString);
+		testPencil.Sharpen();
 		int actualDurability = testPencil.pointDurability;
 		assertEquals("Test 1 failed",expectedDurability,actualDurability);
 	}

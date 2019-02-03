@@ -7,9 +7,21 @@ import org.junit.runner.notification.Failure;
 
 public class Pencil {
 
-    public String Text = "";
+    public String Text;
+    public int pointDurability;
+    public int initialDurability;
 
-    public int pointDurability = 40000;
+    public Pencil(){
+        Text = "";
+        initialDurability = 40000;
+        pointDurability = initialDurability;
+    }
+
+    public Pencil(String iText, int iDurability){
+        Text = iText;
+        initialDurability = iDurability;
+        pointDurability = initialDurability;
+    }
 
     public static void main(String[] args) throws Exception {
         if(args[0].equals("Test")){
@@ -40,6 +52,10 @@ public class Pencil {
         Text+=newText;
         int numCharacters = newText.replaceAll("\\s+","").length();
         degradePoint(numCharacters);
+    }
+
+    public void Sharpen(){
+        
     }
 
     private void degradePoint(int lossDur){
