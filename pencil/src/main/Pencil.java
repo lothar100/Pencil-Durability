@@ -77,4 +77,18 @@ public class Pencil {
         pointDurability = Math.min(initialDurability,pointDurability+gainDur);
         bodyLength--;
     }
+
+    public int countDurabilityUse(String input){
+        int result = 0;
+        char[] characters = input.replaceAll("\\s+","").toCharArray();
+
+        for(int i=0; i<characters.length; i++){
+            if(Character.isUpperCase(characters[i])){
+                result++;
+            }
+            result++;
+        }
+
+        return result;
+    }
 }

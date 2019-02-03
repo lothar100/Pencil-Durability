@@ -25,11 +25,19 @@ public class PencilTest {
 	public void testDegradation() {
 		//Test 1 - check for decrease in point durability
 		String testString = "testing degradation...";
-		int numCharacters = testString.replaceAll("\\s+","").length();
-		int expectedDurability = testPencil.pointDurability - numCharacters;
+		int durabilityUse = testString.replaceAll("\\s+","").length();
+		int expectedDurability = testPencil.pointDurability - durabilityUse;
 		testPencil.Write(testString);
 		int actualDurability = testPencil.pointDurability;
 		assertEquals("Test 1 failed",expectedDurability,actualDurability);
+
+		//Test 2 - check for upper case using two durability
+		testString = "TESTING DEGRADATION...";
+		durabilityUse = testPencil.countDurabilityUse(testString);
+		expectedDurability = testPencil.pointDurability - durabilityUse;
+		testPencil.Write(testString);
+		actualDurability = testPencil.pointDurability;
+		assertEquals("Test 2 failed",expectedDurability,actualDurability);
 	}
 
 	@Test
