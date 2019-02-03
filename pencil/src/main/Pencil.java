@@ -10,17 +10,23 @@ public class Pencil {
     public String Text;
     public int pointDurability;
     public int initialDurability;
+    
+    private int sharpeningRate;
 
     public Pencil(){
         Text = "";
         initialDurability = 40000;
         pointDurability = initialDurability;
+
+        sharpeningRate = 40000;
     }
 
     public Pencil(String iText, int iDurability){
         Text = iText;
         initialDurability = iDurability;
         pointDurability = initialDurability;
+
+        sharpeningRate = 40000;
     }
 
     public static void main(String[] args) throws Exception {
@@ -55,10 +61,14 @@ public class Pencil {
     }
 
     public void Sharpen(){
-        
+        sharpenPoint(sharpeningRate);
     }
 
     private void degradePoint(int lossDur){
         pointDurability = Math.max(0,pointDurability-lossDur);
+    }
+
+    private void sharpenPoint(int gainDur){
+        pointDurability = Math.min(initialDurability,pointDurability+gainDur);
     }
 }
