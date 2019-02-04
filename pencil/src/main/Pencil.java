@@ -11,25 +11,24 @@ public class Pencil {
     public int pointDurability;
     public int initialDurability;
     public int bodyLength;
+    public int eraserDurability;
     
-    private int sharpeningRate;
+    private int sharpeningRate = 40000;
 
-    public Pencil(){
+    public Pencil() {
         Text = "";
-        initialDurability = 40000;
-        pointDurability = initialDurability;
+        pointDurability = 40000;
+        initialDurability = pointDurability;
         bodyLength = 10;
-
-        sharpeningRate = 40000;
+        eraserDurability = 2000;
     }
 
-    public Pencil(String iText, int iDurability, int iBodyLength){
+    public Pencil(String iText, int iPoint, int iBodyLength, int iEraser) {
         Text = iText;
-        initialDurability = iDurability;
-        pointDurability = initialDurability;
+        pointDurability = iPoint;
+        initialDurability = pointDurability;
         bodyLength = iBodyLength;
-
-        sharpeningRate = 40000;
+        eraserDurability = iEraser;
     }
 
     public static void main(String[] args) throws Exception {
@@ -57,16 +56,16 @@ public class Pencil {
         }
     }
 
-    public void Write(String newText){
+    public void Write(String newText) {
         Text+=newText;
         degradePoint(countDurabilityUse(newText));
     }
 
-    public void Sharpen(){
+    public void Sharpen() {
         sharpenPoint(sharpeningRate);
     }
 
-    public void Erase(String eraseText){
+    public void Erase(String eraseText) {
         if(!Text.contains(eraseText)) return;
 
         int start = Text.lastIndexOf(eraseText);
@@ -78,18 +77,18 @@ public class Pencil {
         Text = new String(characters);
     }
 
-    private void degradePoint(int lossDur){
+    private void degradePoint(int lossDur) {
         pointDurability = Math.max(0,pointDurability-lossDur);
     }
 
-    private void sharpenPoint(int gainDur){
+    private void sharpenPoint(int gainDur) {
         if(bodyLength < 1) return;
 
         pointDurability = Math.min(initialDurability,pointDurability+gainDur);
         bodyLength--;
     }
 
-    public int countDurabilityUse(String input){
+    public int countDurabilityUse(String input) {
         int result = 0;
         char[] characters = input.replaceAll("\\s+","").toCharArray();
 

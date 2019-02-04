@@ -22,9 +22,9 @@ public class PencilTest {
 	}
 
 	@Test
-	public void testDegradation() {
+	public void testPointDegradation() {
 		//Test 1 - check for decrease in point durability
-		String testString = "testing degradation...";
+		String testString = "testing point degradation...";
 		int durabilityUse = testPencil.countDurabilityUse(testString);
 		int expectedDurability = testPencil.pointDurability - durabilityUse;
 		testPencil.Write(testString);
@@ -32,7 +32,7 @@ public class PencilTest {
 		assertEquals("Test 1 failed",expectedDurability,actualDurability);
 
 		//Test 2 - check for upper case using two durability
-		testString = "TESTING DEGRADATION...";
+		testString = "TESTING POINT DEGRADATION...";
 		durabilityUse = testPencil.countDurabilityUse(testString);
 		expectedDurability = testPencil.pointDurability - durabilityUse;
 		testPencil.Write(testString);
@@ -41,7 +41,7 @@ public class PencilTest {
 	}
 
 	@Test
-	public void testSharpening(){
+	public void testSharpening() {
 		//Test 1 - check for increase in point durability
 		String testString = "testing sharpening...";
 		int expectedDurability = testPencil.initialDurability;
@@ -64,11 +64,23 @@ public class PencilTest {
 	}
 
 	@Test
-	public void testErase(){
+	public void testErase() {
 		//Test 1 - basic erase
 		String testString = "testing erase...";
 		testPencil.Write(testString);
 		testPencil.Erase("...");
 		assertTrue("Test 1 failed",testPencil.Text.equals("testing erase   "));
+	}
+
+	@Test
+	public void testEraserDegradation() {
+		//Test 1 - check for decrease in eraser durability
+		String testString = "testing eraser degradation...";
+		int characters = testString.replaceAll("\\s+","").length();
+		int expectedDurability = testPencil.eraserDurability - characters;
+		testPencil.Write(testString);
+		testPencil.Erase("...");
+		int actualDurability = testPencil.eraserDurability;
+		assertEquals("Test 1 failed",expectedDurability,actualDurability);
 	}
 }
