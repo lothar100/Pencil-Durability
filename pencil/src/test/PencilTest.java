@@ -76,10 +76,11 @@ public class PencilTest {
 	public void testEraserDegradation() {
 		//Test 1 - check for decrease in eraser durability
 		String testString = "testing eraser degradation...";
-		int characters = testString.replaceAll("\\s+","").length();
-		int expectedDurability = testPencil.eraserDurability - characters;
+		String eraseText = "...";
+		int durabilityUse = Math.min(testPencil.eraserDurability,eraseText.length());
+		int expectedDurability = testPencil.eraserDurability - durabilityUse;
 		testPencil.Write(testString);
-		testPencil.Erase("...");
+		testPencil.Erase(eraseText);
 		int actualDurability = testPencil.eraserDurability;
 		assertEquals("Test 1 failed",expectedDurability,actualDurability);
 	}

@@ -73,8 +73,13 @@ public class Pencil {
         char[] sequence = eraseText.toCharArray();
         for(int i=sequence.length; i>0; i--){
             characters[i+start-1]=' ';
+            degradeEraser();
         }
         Text = new String(characters);
+    }
+
+    private void degradeEraser() {
+        eraserDurability--;
     }
 
     private void degradePoint(int lossDur) {
