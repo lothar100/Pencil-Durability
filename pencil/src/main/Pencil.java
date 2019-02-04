@@ -66,6 +66,10 @@ public class Pencil {
         sharpenPoint(sharpeningRate);
     }
 
+    public void Erase(String eraseText){
+        
+    }
+
     private void degradePoint(int lossDur){
         pointDurability = Math.max(0,pointDurability-lossDur);
     }

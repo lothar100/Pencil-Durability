@@ -62,4 +62,13 @@ public class PencilTest {
 		assertEquals("Test 2 failed",expectedDurability,actualDurability);
 		testPencil.bodyLength = 10;
 	}
+
+	@Test
+	public void testErase(){
+		//Test 1 - basic erase
+		String testString = "testing erase...";
+		testPencil.Write(testString);
+		testPencil.Erase("...");
+		assertTrue("Test 1 failed",testPencil.Text.equals("testing erase   "));
+	}
 }
