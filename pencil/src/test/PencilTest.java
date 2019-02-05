@@ -101,4 +101,18 @@ public class PencilTest {
 		testPencil.Edit("over-using");
 		assertTrue("Test 2 failed",testPencil.Text.equals("over-usi@@it..."));
 	}
+
+	@Test
+	public void testEditDegradation() {
+		//Test 1 - check for decrease in point durability
+		String testString = "testing edit...";
+		String editString = "using";
+		testPencil.Write(testString);
+		testPencil.Erase("testing");
+		int durabilityUse = Math.min(testPencil.pointDurability,editString.length());
+		int expectedDurability = testPencil.pointDurability - durabilityUse;
+		testPencil.Edit(editString);
+		int actualDurability = testPencil.pointDurability;
+		assertEquals("Test 1 failed",expectedDurability,actualDurability);
+	}
 }
