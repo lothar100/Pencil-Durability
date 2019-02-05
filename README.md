@@ -2,13 +2,27 @@
 
 Format: (Terminal >) [Command] [Params]
 
-Test - no params - will run tests from PencilTest.java
-Write - param1: String - will write the param string onto the paper
-Sharpen - no params - will attempt to sharpen the point, increasing point durability
-Erase - param1: String - will erase last occurance of the param string from the paper
-Edit - param1: String - will attempt to insert param string into the location of the last erased text
-Print - no params - will display in the console text currently on the page
-ClearPage - no params - will remove all text and erase data from the paper
+Test	- no params
+		- will run tests from PencilTest.java
+		
+Write	- param1: String
+		- will write the param string onto the paper
+		
+Sharpen	- no params
+		- will attempt to sharpen the point, increasing point durability
+		
+Erase	- param1: String
+		- will erase last occurance of the param string from the paper
+		
+Edit	- param1: String
+		- will attempt to insert param string into the location of the last erased text
+		
+Print	- no params
+		- will display in the console text currently on the page
+		
+ClearPage	- no params
+			- will remove all text and erase data from the paper
+			
 
 Completion: "[Command] complete" should display in the console
 
