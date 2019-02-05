@@ -97,6 +97,11 @@ public class Pencil {
         eData=null;
     }
 
+    public void ClearPage() {
+        Text="";
+        eData=null;
+    }
+
     private void degradeEraser() {
         eraserDurability--;
     }

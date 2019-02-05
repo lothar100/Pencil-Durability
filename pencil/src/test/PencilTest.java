@@ -87,11 +87,18 @@ public class PencilTest {
 
 	@Test
 	public void testEdit(){
-		//Test - basic edit
+		//Test 1 - basic edit
 		String testString = "testing edit...";
 		testPencil.Write(testString);
 		testPencil.Erase("testing");
 		testPencil.Edit("using");
 		assertTrue("Test 1 failed",testPencil.Text.equals("using   edit..."));
+
+		//Test 2 - over editing
+		testPencil.ClearPage();
+		testPencil.Write(testString);
+		testPencil.Erase("testing");
+		testPencil.Edit("over-using");
+		assertTrue("Test 2 failed",testPencil.Text.equals("over-usi@@it..."));
 	}
 }
