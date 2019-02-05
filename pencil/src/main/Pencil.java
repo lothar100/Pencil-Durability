@@ -90,6 +90,9 @@ public class Pencil {
         char[] characters = Text.toCharArray();
         char[] newChars = newText.toCharArray();
         for(int i=0; i < newChars.length; i++){
+
+            if(i+start > characters.length-1) break;// prevent index out of bounds
+
             if(Character.isSpaceChar(characters[i+start])){
                 characters[i+start]=newChars[i];
             }else{
