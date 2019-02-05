@@ -15,6 +15,8 @@ public class Pencil {
     
     private int sharpeningRate = 40000;
 
+    private EraseData eData = null;
+
     public Pencil() {
         Text = "";
         pointDurability = 40000;
@@ -69,9 +71,11 @@ public class Pencil {
         if(!Text.contains(eraseText)) return;
 
         int start = Text.lastIndexOf(eraseText);
+        eData = new EraseData(eraseText,start);
+        
         char[] characters = Text.toCharArray();
         char[] sequence = eraseText.toCharArray();
-        for(int i=sequence.length; i>0; i--){
+        for(int i=sequence.length; i > 0; i--){
             characters[i+start-1]=' ';
             degradeEraser();
         }
@@ -79,7 +83,18 @@ public class Pencil {
     }
 
     public void Edit(String newText) {
-        
+        if(eData==null) return;
+
+        int start = eData.index;
+
+        char[] characters = Text.toCharArray();
+        char[] newChars = newText.toCharArray();
+        for(int i=0; i < newChars.length; i++){
+            characters[i+start]=newChars[i];
+        }
+
+        Text = new String(characters);
+        eData=null;
     }
 
     private void degradeEraser() {

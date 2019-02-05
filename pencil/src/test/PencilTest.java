@@ -92,6 +92,6 @@ public class PencilTest {
 		testPencil.Write(testString);
 		testPencil.Erase("testing");
 		testPencil.Edit("using");
-		assertTrue("Test 1 failed",testPencil.Text.equals("using edit..."));
+		assertTrue("Test 1 failed",testPencil.Text.equals("using   edit..."));
 	}
 }
