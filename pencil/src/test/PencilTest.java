@@ -100,6 +100,12 @@ public class PencilTest {
 		testPencil.Erase("testing");
 		testPencil.Edit("over-using");
 		assertTrue("Test 2 failed",testPencil.Text.equals("over-usi@@it..."));
+
+		//Test 3 - test for index out of bounds
+		testPencil.ClearPage();
+		testPencil.Write(testString);
+		testPencil.Erase("...");
+		testPencil.Edit("1234");
 	}
 
 	@Test
