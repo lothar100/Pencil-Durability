@@ -78,6 +78,10 @@ public class Pencil {
         Text = new String(characters);
     }
 
+    public void Edit(String newText) {
+        
+    }
+
     private void degradeEraser() {
         eraserDurability--;
     }

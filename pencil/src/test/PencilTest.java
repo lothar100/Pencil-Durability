@@ -84,4 +84,14 @@ public class PencilTest {
 		int actualDurability = testPencil.eraserDurability;
 		assertEquals("Test 1 failed",expectedDurability,actualDurability);
 	}
+
+	@Test
+	public void testEdit(){
+		//Test - basic edit
+		String testString = "testing edit...";
+		testPencil.Write(testString);
+		testPencil.Erase("testing");
+		testPencil.Edit("using");
+		assertTrue("Test 1 failed",testPencil.Text.equals("using edit..."));
+	}
 }
