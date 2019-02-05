@@ -95,6 +95,14 @@ public class Pencil {
             }else{
                 characters[i+start]='@';
             }
+
+            if(!Character.isSpaceChar(newChars[i])){
+                if(Character.isUpperCase(newChars[i])){
+                    degradePoint(2);
+                }else{
+                    degradePoint(1);
+                }
+            }
         }
 
         Text = new String(characters);
