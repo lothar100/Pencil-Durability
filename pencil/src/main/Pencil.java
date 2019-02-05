@@ -68,6 +68,7 @@ public class Pencil {
     }
 
     public void Erase(String eraseText) {
+        if(eraserDurability<1) return;
         if(!Text.contains(eraseText)) return;
 
         int start = Text.lastIndexOf(eraseText);
@@ -76,6 +77,8 @@ public class Pencil {
         char[] characters = Text.toCharArray();
         char[] sequence = eraseText.toCharArray();
         for(int i=sequence.length; i > 0; i--){
+            if(eraserDurability==0) break;// prevent erasing once durability reaches 0
+
             characters[i+start-1]=' ';
             degradeEraser();
         }
