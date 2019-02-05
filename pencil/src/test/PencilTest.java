@@ -96,6 +96,13 @@ public class PencilTest {
 		testPencil.Erase(eraseText);
 		int actualDurability = testPencil.eraserDurability;
 		assertEquals("Test 1 failed",expectedDurability,actualDurability);
+
+		//Test 2 - check for no change in text when eraser durability is too low
+		testPencil.ClearPage();
+		testPencil.eraserDurability = 2;
+		testPencil.Write(testString);
+		testPencil.Erase(eraseText);
+		assertTrue("Test 2 failed",testPencil.Text.equals("testing eraser degradation.  "));
 	}
 
 	@Test
