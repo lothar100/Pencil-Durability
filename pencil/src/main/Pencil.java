@@ -112,6 +112,10 @@ public class Pencil {
         eData=null;
     }
 
+    public void Print() {
+        System.out.println(Text);
+    }
+
     public void ClearPage() {
         Text="";
         eData=null;

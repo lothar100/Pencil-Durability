@@ -76,9 +76,11 @@ public class PencilTest {
 		testString = "How much wood would a woodchuck chuck if a woodchuck could chuck wood?";
 		testPencil.Write(testString);
 		testPencil.Erase("chuck");
+		//testPencil.Print();
 		String expectedString = "How much wood would a woodchuck chuck if a woodchuck could       wood?";
 		assertTrue("Test 2 failed",testPencil.Text.equals(expectedString));
 		testPencil.Erase("chuck");
+		//testPencil.Print();
 		expectedString = "How much wood would a woodchuck chuck if a wood      could       wood?";
 		assertTrue("Test 3 failed",testPencil.Text.equals(expectedString));
 	}
