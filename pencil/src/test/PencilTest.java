@@ -145,5 +145,16 @@ public class PencilTest {
 		testPencil.Edit(editString);
 		actualDurability = testPencil.pointDurability;
 		assertEquals("Test 2 failed",expectedDurability,actualDurability);
+
+		//Test 3 - over edit and capital letters (ensure @ degrades 1 point)
+		testPencil.ClearPage();
+		editString = "OVER-USING";
+		testPencil.Write(testString);
+		testPencil.Erase("testing");
+		durabilityUse = testPencil.countDurabilityUse(editString);
+		expectedDurability = testPencil.pointDurability - durabilityUse;
+		testPencil.Edit(editString);
+		actualDurability = testPencil.pointDurability;
+		assertEquals("Test 3 failed",expectedDurability,actualDurability);
 	}
 }
