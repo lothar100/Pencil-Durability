@@ -90,7 +90,11 @@ public class Pencil {
         char[] characters = Text.toCharArray();
         char[] newChars = newText.toCharArray();
         for(int i=0; i < newChars.length; i++){
-            characters[i+start]=newChars[i];
+            if(Character.isSpaceChar(characters[i+start])){
+                characters[i+start]=newChars[i];
+            }else{
+                characters[i+start]='@';
+            }
         }
 
         Text = new String(characters);
