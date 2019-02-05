@@ -116,10 +116,21 @@ public class PencilTest {
 		String editString = "using";
 		testPencil.Write(testString);
 		testPencil.Erase("testing");
-		int durabilityUse = Math.min(testPencil.pointDurability,editString.length());
+		int durabilityUse = testPencil.countDurabilityUse(editString);
 		int expectedDurability = testPencil.pointDurability - durabilityUse;
 		testPencil.Edit(editString);
 		int actualDurability = testPencil.pointDurability;
 		assertEquals("Test 1 failed",expectedDurability,actualDurability);
+
+		//Test 2 - "Test1" with capital letters
+		testPencil.ClearPage();
+		editString = "USING";
+		testPencil.Write(testString);
+		testPencil.Erase("testing");
+		durabilityUse = testPencil.countDurabilityUse(editString);
+		expectedDurability = testPencil.pointDurability - durabilityUse;
+		testPencil.Edit(editString);
+		actualDurability = testPencil.pointDurability;
+		assertEquals("Test 2 failed",expectedDurability,actualDurability);
 	}
 }
